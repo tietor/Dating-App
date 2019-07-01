@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<html xmlns:th="https://www.thymeleaf.org">
 <head>
-    <title>Binder</title>
+    <title>Ma</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <link href="webjars/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
@@ -17,31 +17,7 @@
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 <body>
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="#">Binder</a>
-    <div class="collapse navbar-collapse">
-        <ul class="navbar-nav mr-auto">
-
-        </ul>
-    </div>
-</nav>
-
-<h3>Login</h3>
-<form action="#" th:action="@{/login}" th:object="${user}" method="post">
-    <div class="form-group">
-        <label>username:</label>
-        <input type="text" class="form-control" th:field="${user.username}"/>
-        <td th:if="${#fields.hasErrors('username')}" th:errors="${user.username}" style="color: red">Ihr Passwort oder Benutzername ist falsch!</td>
-    </div>
-    <div class="form-group">
-        <label>password:</label>
-        <input type="password" class="form-control" th:field="${user.password}"/>
-    </div>
-     <td th:if="${#fields.hasErrors('password')}" th:errors="${user.password}" style="color: red">Ihr Passwort oder Benutzername ist falsch!</td>
-
-    <button type="submit" class="btn btn-success">Login</button>
-
-</form>
-
+<p><a href="/like">Like</a></p>
+<p><a href="/dislike">Dislike</a></p>
 </body>
 </html>
