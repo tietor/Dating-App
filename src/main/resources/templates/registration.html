@@ -26,60 +26,73 @@
     </div>
 </nav>
 
-<h3>Login</h3>
-<form action="#" th:action="@{/registration}" th:object="${user}" method="post">
+<h3>Registration</h3>
+<form action="#" th:action="@{/registration}"  enctype="multipart/form-data" th:object="${user}" method="post">
+    <div class="form-group">
+        <select class="form-control" th:field="*{gender}" required>
+            <option value="Mann">Mann</option>
+            <option value="Frau">Frau</option>
+        </select>
+    </div>
     <div class="form-group">
         <label>username:</label>
         <input type="text" class="form-control" th:field="${user.username}"/>
-        <td th:if="${#fields.hasErrors('username')}" th:errors="${user.username}" style="color: red">Ihr Passwort oder Benutzername ist falsch!</td>
+        <td th:if="${#fields.hasErrors('username')}" th:errors="${user.username}" style="color: red">Ihr Passwort oder
+            Benutzername ist falsch!
+        </td>
     </div>
 
     <div class="form-group">
-        <label>first name:</label>
+        <label>Vorname:</label>
         <input type="text" class="form-control" th:field="${user.firstName}"/>
-        <td th:if="${#fields.hasErrors('firstName')}" th:errors="${user.firstName}" style="color: red">Dieses Feld ist leer!</td>
+        <td th:if="${#fields.hasErrors('firstName')}" th:errors="${user.firstName}" style="color: red">Dieses Feld ist
+            leer!
+        </td>
     </div>
 
-   <div class="form-group">
-        <label>last name:</label>
+    <div class="form-group">
+        <label>Nachname:</label>
         <input type="text" class="form-control" th:field="${user.lastName}"/>
-        <td th:if="${#fields.hasErrors('lastName')}" th:errors="${user.lastName}" style="color: red">Dieses Feld ist leer!</td>
-   </div>
+        <td th:if="${#fields.hasErrors('lastName')}" th:errors="${user.lastName}" style="color: red">Dieses Feld ist
+            leer!
+        </td>
+    </div>
+    <div class="form-group">
+        <label>Email:</label>
+        <input type="email" class="form-control" th:field="${user.emailAddress}"/>
+        <td th:if="${#fields.hasErrors('emailAddress')}" th:errors="${user.emailAddress}" style="color: red">Dieses Feld
+            ist leer!
+        </td>
+    </div>
 
-   <div class="form-group">
-        <label>last name:</label>
-        <input type="text" class="form-control" th:field="${user.lastName}"/>
-        <td th:if="${#fields.hasErrors('lastName')}" th:errors="${user.lastName}" style="color: red">Dieses Feld ist leer!</td>
-   </div>
-
-     <div class="form-group">
-           <label>Emailadresse:</label>
-           <input type="email" class="form-control" th:field="${user.emailAddress}"/>
-           <td th:if="${#fields.hasErrors('emailAddress')}" th:errors="${user.emailAddress}" style="color: red">Dieses Feld ist leer!</td>
-       </div>
-
-   <div class="form-group">
-        <label>password:</label>
+    <div class="form-group">
+        <label>Passwort:</label>
         <input type="password" class="form-control" th:field="${user.password}"/>
-        <td th:if="${#fields.hasErrors('password')}" th:errors="${user.password}" style="color: red">Ihr Passwort oder Benutzername ist falsch!</td>
-   </div>
+        <td th:if="${#fields.hasErrors('password')}" th:errors="${user.password}" style="color: red">Ihr Passwort oder
+            Benutzername ist falsch!
+        </td>
+    </div>
 
-   <div class="form-group">
-           <label>Geburtsdatum:</label>
-           <input type="date" class="form-control" th:field="${user.birthdate}"/>
-           <td th:if="${#fields.hasErrors('birthdate')}" th:errors="${user.birthdate}" style="color: red">Dieses Feld ist leer!</td>
-   </div>
+    <div class="form-group">
+        <label>Geburtsdatum:</label>
+        <input type="date" class="form-control" th:field="${user.birthdate}"/>
+        <td th:if="${#fields.hasErrors('birthdate')}" th:errors="${user.birthdate}" style="color: red">Dieses Feld ist
+            leer!
+        </td>
+    </div>
 
     <div class="form-group">
         <label>Bio:</label>
         <input type="text" class="form-control" th:field="${user.bio}"/>
-        <td th:if="${#fields.hasErrors('bio')}" th:errors="${user.bio}" style="color: red">Ihr Passwort oder Benutzername ist falsch!</td>
+        <td th:if="${#fields.hasErrors('bio')}" th:errors="${user.bio}" style="color: red">Ihr Passwort oder
+            Benutzername ist falsch!
+        </td>
     </div>
-
-
-
-
-    <button type="submit" class="btn btn-success">Login</button>
+    <div class="form-group">
+        <label>Profilbild auswählen:</label>
+        <input type="file" name="file" required>
+    </div>
+    <button type="submit" class="btn btn-success">Registrieren</button>
 
 </form>
 

@@ -14,13 +14,7 @@ public class UserService {
         users.add(new User("hallo", "hallo"));
     }
 
-    //    public void addProducer (User value) {
-//        users.add(value);
-//    }
-
     public boolean checkUser(User value) {
-
-
         for (User user : users) {
             if (user.getPassword().equals(value.getPassword()) && user.getUsername().equals(value.getUsername())) {
                 return true;
@@ -30,10 +24,7 @@ public class UserService {
     }
 
     public boolean add(User value) {
-
-
       users.add(value);
-
         return false;
     }
 

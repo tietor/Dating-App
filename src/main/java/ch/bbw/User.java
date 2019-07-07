@@ -1,7 +1,10 @@
 package ch.bbw;
 
 import org.hibernate.validator.constraints.UniqueElements;
+import org.springframework.context.annotation.Scope;
+import org.springframework.context.annotation.ScopedProxyMode;
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.stereotype.Component;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.Future;
@@ -10,10 +13,10 @@ import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.Date;
-
+@Component
+@Scope(value = "session", proxyMode = ScopedProxyMode.TARGET_CLASS)
 public class User {
 
-    @UniqueElements
     private String username;
 
     private String firstName;
@@ -31,6 +34,8 @@ public class User {
     private String emailAddress;
 
     private String gender;
+
+    private String profilePicture;
 
     private int age;
 
@@ -115,6 +120,18 @@ public class User {
         this.emailAddress = emailAddress;
     }
 
+    public Date getBirthdate() {
+        return birthdate;
+    }
+
+    public void setBirthdate(Date birthdate) {
+        this.birthdate = birthdate;
+    }
+
+    public String getProfilePicture() {
+        return profilePicture;
+    }
+
     public String getGender() {
         return gender;
     }
@@ -123,12 +140,8 @@ public class User {
         this.gender = gender;
     }
 
-    public Date getBirthdate() {
-        return birthdate;
-    }
-
-    public void setBirthdate(Date birthdate) {
-        this.birthdate = birthdate;
+    public void setProfilePicture(String profilePicture) {
+        this.profilePicture = profilePicture;
     }
 }
 
