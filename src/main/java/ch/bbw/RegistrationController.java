@@ -32,26 +32,26 @@ public class RegistrationController {
 
   @GetMapping("/registration")
   public String getUserLogin(Model model) {
-    model.addAttribute("user", new User());
+    model.addAttribute("user", myUser);
     return "registration";
   }
 
   @PostMapping("/registration")
   public String registration(@RequestParam("file") MultipartFile multipartFile,
       @Valid @ModelAttribute(name = "user") User user,
-      BindingResult bindingResult,
-      Model model) {
+      BindingResult bindingResult) {
     storageService.init();
     if (bindingResult.hasErrors()) {
       return "registration";
     } else {
-      user.setProfilePicture(storageService.store(multipartFile));
+      myUser.setProfilePicture(storageService.store(multipartFile));
+      myUser = userService.addAttributesOfUser(myUser, user);
         if (user.getGender().equalsIgnoreCase("Mann")) {
+          System.out.println(myUser);
           return "redirect:/addBizepsSize";
         } else  {
-
+          return "redirect:/addHueftumfang";
         }
-      return "redirect:/login";
     }
   }
 }

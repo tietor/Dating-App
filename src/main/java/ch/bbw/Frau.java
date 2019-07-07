@@ -1,7 +1,9 @@
 package ch.bbw;
 
-public class Frau extends User {
+import javax.validation.constraints.NotNull;
 
+public class Frau extends User {
+  @NotNull(message = "Bitte das Feld ausfüllen")
   private int hueftumfang;
 
   public int getHueftumfang() {

@@ -11,11 +11,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 @Controller
 public class AddInformationController {
 
-  private User user;
+  private User myUser;
   private UserService userService;
 
-  public AddInformationController(User user, UserService userService) {
-    this.user = user;
+  public AddInformationController(User myUser, UserService userService) {
+    this.myUser = myUser;
     this.userService = userService;
   }
 
@@ -30,17 +30,26 @@ public class AddInformationController {
     if (bindingResult.hasErrors()) {
       return "bizeps";
     }
-    mann.setAge(user.getAge());
-    mann.setBio(user.getBio());
-    mann.setBirthdate(user.getBirthdate());
-    mann.setEmailAddress(user.getEmailAddress());
-    mann.setFirstName(user.getFirstName());
-    mann.setGender(user.getGender());
-    mann.setLastName(user.getLastName());
-    mann.setPassword(user.getPassword());
-    mann.setProfilePicture(user.getProfilePicture());
-    mann.setUsername(user.getUsername());
+    mann = (Mann) userService.addAttributesOfUser(mann, myUser);
+    mann.setProfilePicture(myUser.getProfilePicture());
     userService.add(mann);
+    return "redirect:/login";
+  }
+
+  @GetMapping("/addHueftumfang")
+  public String addHueftumfang(Model model) {
+    model.addAttribute("frau", new Frau());
+    return "hueftumfang";
+  }
+
+  @PostMapping("/addHueftumfang")
+  public String addHueftumfang(@Valid Frau frau, BindingResult bindingResult) {
+    if (bindingResult.hasErrors()) {
+      return "hueftumfang";
+    }
+    frau = (Frau) userService.addAttributesOfUser(frau, myUser);
+    frau.setProfilePicture(myUser.getProfilePicture());
+    userService.add(frau);
     return "redirect:/login";
   }
 

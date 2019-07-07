@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Frau</title>
+</head>
+<body th:object="${frau}">
+    <img th:src="${frau.profilePicture}">
+    <p th:text="${frau.username}"></p>
+
+
+</body>
+</html>
