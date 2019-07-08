@@ -7,25 +7,31 @@ import org.springframework.stereotype.Service;
 @Service
 public class MatchingService {
 
-  private UserService userServicee;
+  private UserService userService;
 
-  public MatchingService(UserService userServicee) {
-    this.userServicee = userServicee;
+  public MatchingService(UserService userService) {
+    this.userService = userService;
   }
 
-  public User getUnmatchedPerson(User user) {
-    List<User> allUsers = userServicee.getAllUsers();
+  public Frau getUnmatchedFrau(User user) {
+    List<User> allUsers = userService.getAllUsers();
     if (user.getGender().equalsIgnoreCase("Mann")) {
       for (User person : allUsers) {
-        if (!user.getLikedPersons().contains(person) && !user.getMatches().contains(person) && person.getGender().equalsIgnoreCase("Frau")) {
-          return person;
+        if (!user.getLikedPersons().contains(person) && !user.getMatches().contains(person) && person.getGender()
+            .equalsIgnoreCase("Frau")) {
+          return (Frau) person;
         }
       }
-    } else {
-      for (User person : allUsers) {
-        if (!user.getLikedPersons().contains(person) && !user.getMatches().contains(person) && person instanceof Mann) {
-          return person;
-        }
+    }
+    return null;
+  }
+
+  public Mann getUnmatchedMann(User user) {
+    List<User> allUsers = userService.getAllUsers();
+    for (User person : allUsers) {
+      if (!user.getLikedPersons().contains(person) && !user.getMatches().contains(person) && person.getGender()
+          .equalsIgnoreCase("Mann")) {
+        return (Mann) person;
       }
     }
     return null;

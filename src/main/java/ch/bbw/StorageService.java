@@ -18,7 +18,7 @@ public class StorageService {
     String path;
     try {
       if (!file.getOriginalFilename().endsWith(".jpg") && !file.getOriginalFilename().endsWith(".png") && !file.getOriginalFilename().endsWith(".jpeg")) {
-        throw new RuntimeException("Uploaded File is no Java file!");
+        throw new RuntimeException("Uploaded File is not a picture!");
       }
       SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmssSSS");
       if (!Files.exists(Paths.get("upload-dir/"))) {
